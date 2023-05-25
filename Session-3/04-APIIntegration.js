@@ -1,14 +1,21 @@
 const api_url = "https://jsonplaceholder.typicode.com/users"
 
 
-function getApiData(url)
+async function getApiData(url)
 {
-    setTimeout(() => {
-        fetch(url)
-    .then(res=>res.json())
-    .then(res=>displayDataTable(res))
-    .catch(res=>console.log(res))
-    }, 5000);
+   
+   try
+   {
+    let res = await fetch(url)
+    let data=await res.json()
+    displayDataTable(data)
+   }
+   catch(ex)
+   {
+    console.log(ex)
+   }
+    
+   
 }
 getApiData(api_url)
 
